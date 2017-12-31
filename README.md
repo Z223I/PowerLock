@@ -1,0 +1,1 @@
+Operates automotive power lock.
