@@ -37,7 +37,7 @@ class PowerLock:
 ########################################################
 
     def __init__(self, _powerRelay, _pollA, _poleB):
-        self.islock = False
+        self.isLocked = False
         self.powerRelay = _powerRelay
         self.pollA = _pollA
         self.poleB = _poleB
@@ -50,21 +50,21 @@ class PowerLock:
 
 
 ########################################################
-# method off
+# method unlock
 ########################################################
 
-    def off(self):
+    def unlock(self):
 
         """
-        Powers off the heater.
+        Powers unlock the heater.
         """
 
         PowerLock.relay.off(self.powerRelay)
-        self.islock = False
-        return self.islock
+        self.isLocked = False
+        return self.isLocked
 
 #
-# End method off
+# End method unlock
 #
 
 
@@ -81,8 +81,8 @@ class PowerLock:
 #        print "pinList = ", PowerLock.relay.pinList
 
         PowerLock.relay.on(self.powerRelay)
-        self.islock = True
-        return self.islock
+        self.isLocked = True
+        return self.isLocked
 
 #
 # End method lock

@@ -25,13 +25,13 @@ class PowerLockTestCase(unittest.TestCase):
                 'Wrong relay port.')
 
     def test_islock(self):
-        self.assertFalse(self.heater.islock, 'Heater should be off.')
+        self.assertFalse(self.heater.isLocked, 'Heater should be off.')
 
     def test_lock(self):
         self.assertTrue(self.heater.lock(), 'Heater should be lock.')
 
-    def test_off(self):
-        self.assertFalse(self.heater.off(), 'Heater should be off.')
+    def test_unlock(self):
+        self.assertFalse(self.heater.unlock(), 'Heater should be off.')
 
 
 
