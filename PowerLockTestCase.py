@@ -1,8 +1,8 @@
 import unittest
-from PowerLock import Heater
+from PowerLock import PowerLock
 from relaypipy import RelayPiPy
 
-class HeaterTestCase(unittest.TestCase):
+class PowerLockTestCase(unittest.TestCase):
     relay4 = None 
 
     def setUp(self):
@@ -15,7 +15,7 @@ class HeaterTestCase(unittest.TestCase):
         self.powerRelay = 3
         self.minAirTemp = 40
         self.minWaterTemp = 58
-        self.heater = Heater(self.powerRelay, self.minAirTemp, self.minWaterTemp)
+        self.heater = PowerLock(self.powerRelay, self.minAirTemp, self.minWaterTemp)
 
     def tearDown(self):
         self.heater = None

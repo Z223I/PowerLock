@@ -12,11 +12,11 @@ from relaypipy import RelayPiPy
 
 ########################################################
 #
-# Class Heater
+# Class PowerLock
 #
 ########################################################
 
-class Heater:
+class PowerLock:
 
     """
     This class uses a relay to turn on a water heater
@@ -59,7 +59,7 @@ class Heater:
         Powers off the heater.
         """
 
-        Heater.relay.off(self.powerRelay)
+        PowerLock.relay.off(self.powerRelay)
         self.isOn = False
         return self.isOn
 
@@ -78,9 +78,9 @@ class Heater:
         Powers on the heater.
         """
 #        print "Relay = ", self.powerRelay
-#        print "pinList = ", Heater.relay.pinList
+#        print "pinList = ", PowerLock.relay.pinList
 
-        Heater.relay.on(self.powerRelay)
+        PowerLock.relay.on(self.powerRelay)
         self.isOn = True
         return self.isOn
 
@@ -145,6 +145,6 @@ class Heater:
 
 ########################################################
 #
-# End class Heater
+# End class PowerLock
 #
 ########################################################
