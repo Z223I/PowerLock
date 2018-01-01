@@ -48,6 +48,36 @@ class PowerLock:
 
 
 ########################################################
+# method lock
+########################################################
+
+    def lock(self):
+
+        """
+        Locks the powerlock.
+        """
+
+        # Guarantee power is off.
+        self.relay.off(self.powerRelay)
+
+        # Set polarity
+        normalPolarity = True
+        self.setPolarity(normalPolarity)
+
+
+        self.powerThenOff()
+
+        time.sleep(4)
+
+        self.isLocked = True
+        return self.isLocked
+
+#
+# End method lock
+#
+
+
+########################################################
 # method unlock
 ########################################################
 
@@ -58,15 +88,16 @@ class PowerLock:
         """
 
         # Guarantee power is off.
-        PowerLock.relay.off(self.powerRelay)
+        self.relay.off(self.powerRelay)
 
-        # Set poles
-        PowerLock.relay.off(self.poleA)
-        PowerLock.relay.on(self.poleB)
-        time.sleep(1) # For test only
+        # Set polarity
+        normalPolarity = False
+        self.setPolarity(normalPolarity)
 
 
         self.powerThenOff()
+
+        time.sleep(4)
 
         self.isLocked = False
         return self.isLocked
@@ -75,26 +106,6 @@ class PowerLock:
 # End method unlock
 #
 
-
-########################################################
-# method lock
-########################################################
-
-    def lock(self):
-
-        """
-        Powers on the heater.
-        """
-#        print "Relay = ", self.powerRelay
-#        print "pinList = ", PowerLock.relay.pinList
-
-        PowerLock.relay.on(self.powerRelay)
-        self.isLocked = True
-        return self.isLocked
-
-#
-# End method lock
-#
 
 
 ########################################################
