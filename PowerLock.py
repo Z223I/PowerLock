@@ -37,7 +37,7 @@ class PowerLock:
 ########################################################
 
     def __init__(self, _powerRelay, _pollA, _poleB):
-        self.isOn = False
+        self.islock = False
         self.powerRelay = _powerRelay
         self.pollA = _pollA
         self.poleB = _poleB
@@ -60,8 +60,8 @@ class PowerLock:
         """
 
         PowerLock.relay.off(self.powerRelay)
-        self.isOn = False
-        return self.isOn
+        self.islock = False
+        return self.islock
 
 #
 # End method off
@@ -69,10 +69,10 @@ class PowerLock:
 
 
 ########################################################
-# method on
+# method lock
 ########################################################
 
-    def on(self):
+    def lock(self):
 
         """
         Powers on the heater.
@@ -81,11 +81,11 @@ class PowerLock:
 #        print "pinList = ", PowerLock.relay.pinList
 
         PowerLock.relay.on(self.powerRelay)
-        self.isOn = True
-        return self.isOn
+        self.islock = True
+        return self.islock
 
 #
-# End method on
+# End method lock
 #
 
 
@@ -106,7 +106,7 @@ class PowerLock:
             needHeater = True
 
         if needHeater:
-            return self.on()
+            return self.lock()
 
         if _waterTemp >= self.poleB and _airTemp \
             >= self.pollA:
