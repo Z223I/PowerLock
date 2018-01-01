@@ -64,6 +64,7 @@ class PowerLock:
         normalPolarity = True
         self.setPolarity(normalPolarity)
 
+        time.sleep(4)
 
         self.powerThenOff()
 
@@ -94,6 +95,7 @@ class PowerLock:
         normalPolarity = False
         self.setPolarity(normalPolarity)
 
+        time.sleep(4)
 
         self.powerThenOff()
 
