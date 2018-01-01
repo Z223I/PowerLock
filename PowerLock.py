@@ -36,13 +36,11 @@ class PowerLock:
 # method __init__
 ########################################################
 
-    def __init__(self, _powerRelay, _pollA, _poleB):
+    def __init__(self, _powerRelay, _poleA, _poleB):
         self.isLocked = False
         self.powerRelay = _powerRelay
-        self.pollA = _pollA
+        self.poleA = _poleA
         self.poleB = _poleB
-
-# TODO tell relay to reserve one relay
 
 #
 # End method __init__
@@ -56,10 +54,26 @@ class PowerLock:
     def unlock(self):
 
         """
-        Powers unlock the heater.
+        Unlocks the powerlock.
         """
 
+        # Guarantee power is off.
         PowerLock.relay.off(self.powerRelay)
+
+        # Set poles
+        PowerLock.relay.off(self.poleA)
+        PowerLock.relay.on(self.poleB)
+        time.sleep(1) # For test only
+
+        # Apply power for a little bit.
+        PowerLock.relay.on(self.powerRelay)
+        time.sleep(2)
+
+        # Turn the three relays back.
+        # Shut of power first.
+        PowerLock.relay.off(self.powerRelay)
+        PowerLock.relay.off(self.poleA)
+        PowerLock.relay.off(self.poleB)
         self.isLocked = False
         return self.isLocked
 
