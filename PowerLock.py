@@ -65,15 +65,9 @@ class PowerLock:
         PowerLock.relay.on(self.poleB)
         time.sleep(1) # For test only
 
-        # Apply power for a little bit.
-        PowerLock.relay.on(self.powerRelay)
-        time.sleep(2)
 
-        # Turn the three relays back.
-        # Shut of power first.
-        PowerLock.relay.off(self.powerRelay)
-        PowerLock.relay.off(self.poleA)
-        PowerLock.relay.off(self.poleB)
+        self.powerThenOff()
+
         self.isLocked = False
         return self.isLocked
 
@@ -112,6 +106,26 @@ class PowerLock:
 
 #
 # End method setpollA
+#
+
+
+########################################################
+# method powerThenOff
+########################################################
+
+    def powerThenOff(self):
+        # Apply power for a little bit.
+        PowerLock.relay.on(self.powerRelay)
+        time.sleep(2)
+
+        # Turn the three relays back.
+        # Shut of power first.
+        PowerLock.relay.off(self.powerRelay)
+        PowerLock.relay.off(self.poleA)
+        PowerLock.relay.off(self.poleB)
+
+#
+# End method powerThenOff
 #
 
 
