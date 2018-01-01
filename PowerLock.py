@@ -90,34 +90,6 @@ class PowerLock:
 
 
 ########################################################
-# method run
-########################################################
-
-    def run(self, _airTemp, _waterTemp):
-
-        needHeater = False
-
-        diffAir = 1
-        if _airTemp < self.pollA - diffAir:
-            needHeater = True
-
-        diffWater = 1
-        if _waterTemp < self.poleB - diffWater:
-            needHeater = True
-
-        if needHeater:
-            return self.lock()
-
-        if _waterTemp >= self.poleB and _airTemp \
-            >= self.pollA:
-            return self.off()
-
-#
-# End method run
-#
-
-
-########################################################
 # method setpollA
 ########################################################
 

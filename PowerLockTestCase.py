@@ -33,18 +33,6 @@ class PowerLockTestCase(unittest.TestCase):
     def test_off(self):
         self.assertFalse(self.heater.off(), 'Heater should be off.')
 
-    def test_run_1_BothTempsLow(self):
-        self.assertTrue(self.heater.run(self.poleA - 2, self.poleB - 2), 'Heater should be lock.')
-
-    def test_run_2_AirTempLow(self):
-        self.assertTrue(self.heater.run(self.poleA - 2, self.poleB), 'Heater should be lock.')
-
-    def test_run_3_WaterTempLow(self):
-        self.assertTrue(self.heater.run(self.poleA, self.poleB - 2), 'Heater should be lock.')
-
-    def test_run_4_BothTempsOK(self):
-        self.assertFalse(self.heater.run(self.poleA, self.poleB), 'Heater should be off.')
-
 
 
 if __name__ == '__main__':
