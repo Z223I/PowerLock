@@ -14,8 +14,8 @@ class PowerLockTestCase(unittest.TestCase):
 
         self.powerRelay = 3
         self.poleA = 40
-        self.minWaterTemp = 58
-        self.heater = PowerLock(self.powerRelay, self.poleA, self.minWaterTemp)
+        self.poleB = 58
+        self.heater = PowerLock(self.powerRelay, self.poleA, self.poleB)
 
     def tearDown(self):
         self.heater = None
@@ -34,16 +34,16 @@ class PowerLockTestCase(unittest.TestCase):
         self.assertFalse(self.heater.off(), 'Heater should be off.')
 
     def test_run_1_BothTempsLow(self):
-        self.assertTrue(self.heater.run(self.poleA - 2, self.minWaterTemp - 2), 'Heater should be on.')
+        self.assertTrue(self.heater.run(self.poleA - 2, self.poleB - 2), 'Heater should be on.')
 
     def test_run_2_AirTempLow(self):
-        self.assertTrue(self.heater.run(self.poleA - 2, self.minWaterTemp), 'Heater should be on.')
+        self.assertTrue(self.heater.run(self.poleA - 2, self.poleB), 'Heater should be on.')
 
     def test_run_3_WaterTempLow(self):
-        self.assertTrue(self.heater.run(self.poleA, self.minWaterTemp - 2), 'Heater should be on.')
+        self.assertTrue(self.heater.run(self.poleA, self.poleB - 2), 'Heater should be on.')
 
     def test_run_4_BothTempsOK(self):
-        self.assertFalse(self.heater.run(self.poleA, self.minWaterTemp), 'Heater should be off.')
+        self.assertFalse(self.heater.run(self.poleA, self.poleB), 'Heater should be off.')
 
 
 

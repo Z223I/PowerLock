@@ -36,11 +36,11 @@ class PowerLock:
 # method __init__
 ########################################################
 
-    def __init__(self, _powerRelay, _pollA, _minWaterTemp):
+    def __init__(self, _powerRelay, _pollA, _poleB):
         self.isOn = False
         self.powerRelay = _powerRelay
         self.pollA = _pollA
-        self.minWaterTemp = _minWaterTemp
+        self.poleB = _poleB
 
 # TODO tell relay to reserve one relay
 
@@ -102,13 +102,13 @@ class PowerLock:
             needHeater = True
 
         diffWater = 1
-        if _waterTemp < self.minWaterTemp - diffWater:
+        if _waterTemp < self.poleB - diffWater:
             needHeater = True
 
         if needHeater:
             return self.on()
 
-        if _waterTemp >= self.minWaterTemp and _airTemp \
+        if _waterTemp >= self.poleB and _airTemp \
             >= self.pollA:
             return self.off()
 
@@ -130,15 +130,15 @@ class PowerLock:
 
 
 ########################################################
-# method setMinWaterTemp
+# method setpoleB
 ########################################################
 
-    def setMinWaterTemp(self, _minWaterTemp):
-        self.minWaterTemp = _minWaterTemp
+    def setpoleB(self, _poleB):
+        self.poleB = _poleB
 
 
 #
-# End method setMinWaterTemp
+# End method setpoleB
 #
 
 
