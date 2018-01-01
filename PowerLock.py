@@ -98,14 +98,26 @@ class PowerLock:
 
 
 ########################################################
-# method setpollA
+# method setPolarity
 ########################################################
 
-    def setpollA(self, _pollA):
-        self.pollA = _pollA
+    def setPolarity(self, _normalPolarity):
+
+        """
+        Sets polarity of powerlock.
+        """
+
+        if _normalPolarity:
+            self.relay.on(self.poleA)
+            self.relay.off(self.poleB)
+        else:
+            self.relay.off(self.poleA)
+            self.relay.on(self.poleB)
+
+        return _normalPolarity
 
 #
-# End method setpollA
+# End method setPolarity
 #
 
 
@@ -126,19 +138,6 @@ class PowerLock:
 
 #
 # End method powerThenOff
-#
-
-
-########################################################
-# method setpoleB
-########################################################
-
-    def setpoleB(self, _poleB):
-        self.poleB = _poleB
-
-
-#
-# End method setpoleB
 #
 
 

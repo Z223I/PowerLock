@@ -27,6 +27,13 @@ class PowerLockTestCase(unittest.TestCase):
     def test_isLocked(self):
         self.assertFalse(self.powerLock.isLocked, 'Should be locked.')
 
+    def test_setPolarity_1(self):
+        self.assertTrue(self.powerLock.setPolarity(True), 'Should return True.')
+
+    def test_setPolarity_2(self):
+        self.assertFalse(self.powerLock.setPolarity(False), 'Should return False.')
+        
+
     def test_lock(self):
         self.assertTrue(self.powerLock.lock(), 'Should be locked.')
 
