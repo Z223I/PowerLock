@@ -64,11 +64,11 @@ class PowerLock:
         normalPolarity = True
         self.setPolarity(normalPolarity)
 
-        time.sleep(1)
+        #time.sleep(1)
 
         self.powerThenOff()
 
-        time.sleep(1)
+        #time.sleep(1)
 
         self.isLocked = True
         return self.isLocked
@@ -95,11 +95,11 @@ class PowerLock:
         normalPolarity = False
         self.setPolarity(normalPolarity)
 
-        time.sleep(1)
+        #time.sleep(1)
 
         self.powerThenOff()
 
-        time.sleep(1)
+        #time.sleep(1)
 
         self.isLocked = False
         return self.isLocked
@@ -141,7 +141,7 @@ class PowerLock:
     def powerThenOff(self):
         # Apply power for a little bit.
         PowerLock.relay.on(self.powerRelay)
-        time.sleep(2)
+        time.sleep(.5)
 
         # Turn the three relays back.
         # Shut of power first.

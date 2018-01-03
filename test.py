@@ -1,6 +1,6 @@
 from PowerLock import PowerLock
 from relaypipy import RelayPiPy
-
+import time
 
 relay4 = None 
 
@@ -14,4 +14,5 @@ poleB = 2
 powerLock = PowerLock(powerRelay, poleA, poleB)
 
 powerLock.lock()
+time.sleep(5)
 powerLock.unlock()
