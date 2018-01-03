@@ -1,4 +1,3 @@
-import unittest
 from PowerLock import PowerLock
 from relaypipy import RelayPiPy
 
