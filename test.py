@@ -14,5 +14,5 @@ poleB = 2
 powerLock = PowerLock(powerRelay, poleA, poleB)
 
 powerLock.lock()
-time.sleep(5)
+time.sleep(1)
 powerLock.unlock()
